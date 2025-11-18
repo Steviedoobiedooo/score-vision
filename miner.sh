@@ -12,10 +12,9 @@ if pm2 list | grep -q "$MINER_PROCESS_NAME"; then
   pm2 delete $MINER_PROCESS_NAME
 fi
 
-cd miner
 pm2 start \
   --name $MINER_PROCESS_NAME \
-  -- main:app --host 0.0.0.0 --port $MINER_PORT
+  -- miner/main:app --host 0.0.0.0 --port $MINER_PORT
 
 # synchronise the process list with the pm2 ecosystem file
 pm2 save
